@@ -32,12 +32,12 @@ int main() {
   dump("MSG: ", in, sizeof(in));
 
   memset(out, 0, sizeof(out));
-  gostcrypt(&ekey, in, out);
+  gost_enc(&ekey, in, out, sizeof(in)/8);
 
   dump("ECRYPTED: ", out, sizeof(out));
 
   memset(in, 0, sizeof(in));
-  gostdecrypt(&dkey, out, in);
+  gost_dec(&dkey, out, in, sizeof(out)/8);
   dump("DECRYPTED: ", in, sizeof(in));
 
   return 0;
