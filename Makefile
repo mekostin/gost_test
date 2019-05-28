@@ -4,8 +4,8 @@ SOURCES				= gost gost89
 DIROBJ    		= obj/
 FILEOBJ     	= $(addsuffix .o, $(SOURCES))
 PATHOBJ     	= $(addprefix $(DIROBJ), $(FILEOBJ))
-CFLAGS				= -static -std=gnu90 -O2
-CC						= gcc
+CFLAGS				= 
+CC						= g++
 
 VPATH = $(DIRSOUR) $(DIROBJ)
 

@@ -8,8 +8,8 @@ gost_ctx dkey;
 
 unsigned char	uKey[32]={0};
 
-unsigned char in[16]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-unsigned char out[16]={0};
+unsigned char in[32]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+unsigned char out[32]={0};
 
 unsigned char iv_enc[16]={0};
 unsigned char iv_dec[16]={0};
@@ -49,7 +49,10 @@ int main() {
 
 
   memset(out, 0, sizeof(out));
-  gost_enc_cfb(&ekey, iv_enc, in, out, sizeof(in)/8);
+  gost_enc_cfb(&ekey, iv_enc, in, out, 2);
+  dump("ECRYPTED CFB: ", out, sizeof(out));
+
+  gost_enc_cfb(&ekey, iv_enc, in+16, out+16, 2);
   dump("ECRYPTED CFB: ", out, sizeof(out));
 
   memset(in, 0, sizeof(in));
