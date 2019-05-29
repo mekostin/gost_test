@@ -47,13 +47,13 @@ int main() {
   gost_dec(&dkey, out, in, sizeof(out)/8);
   dump("DECRYPTED: ", in, sizeof(in));
 
-
+  printf("\n\n");
   memset(out, 0, sizeof(out));
   gost_enc_cfb(&ekey, iv_enc, in, out, 2);
-  dump("ECRYPTED CFB: ", out, sizeof(out));
+  dump("ECRYPTED CFB_1: ", out, sizeof(out));
 
   gost_enc_cfb(&ekey, iv_enc, in+16, out+16, 2);
-  dump("ECRYPTED CFB: ", out, sizeof(out));
+  dump("ECRYPTED CFB_2: ", out, sizeof(out));
 
   memset(in, 0, sizeof(in));
   gost_dec_cfb(&dkey, iv_dec, out, in, sizeof(out)/8);
